@@ -19,10 +19,11 @@ socket.emit('newMessage',generateMessage('Admin','Welcome to the chat app'));
     
 socket.broadcast.emit('newMessage',generateMessage('Admin','New User Joined'));
 
-socket.on('createMessage',(message)=>{
+socket.on('createMessage',(message,callback)=>{
     console.log('Create Message',message);  
     //SENDNG TO ALL CONNECTED USERS(INCLUDING THE SENDER)
     io.emit('newMessage',generateMessage(message.from,message.text));
+    callback('This is from the server.');
     /*SENDNG TO ALL CONNECTED USERS(EXCLUDING THE SENDER)
     socket.broadcast.emit('newMessage',{
         from:message.from,
