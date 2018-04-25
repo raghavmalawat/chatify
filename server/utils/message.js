@@ -1,18 +1,20 @@
 var moment=require('moment');
 
-var generateMessage=(from,text)=>{
+var generateMessage=(from,text,color)=>{
     return {
         from,
         text,
-        createdAt:moment().valueOf()
+        createdAt:moment().valueOf(),
+        color
     };
 };
 
-var generateLocationMessage=(from,latitude,longitude)=>{
+var generateLocationMessage=(from,latitude,longitude,color)=>{
     return {
         from,
         url:`https://www.google.com/maps?q=${latitude},${longitude}`,
-        createdAt:moment().valueOf()
+        createdAt:moment().valueOf(),
+        color
     };
 };
 module.exports={generateMessage,generateLocationMessage};

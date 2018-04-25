@@ -42,24 +42,36 @@ socket.on('updateUserList',function(users){
 });
 
 socket.on('newMessage',function(message){
+    var col;
+    if(message.from=='Admin')
+        col='blue';
+    else    
+        col=message.color;  
     var formattedTime=moment(message.createdAt).format('h:mm a');
     var template=jQuery('#message-template').html();
     var html=Mustache.render(template,{
         text:message.text,
         from:message.from,
-        createdAt:formattedTime
+        createdAt:formattedTime,
+        color:col
     });
     jQuery('#messages').append(html); 
     scrollToBottom();
 });
 
 socket.on('newLocationMessage',function(message){
+    var col;
+    if(message.from=='Admin')
+        col='blue';
+    else    
+        col=message.color;  
     var formattedTime=moment(message.createdAt).format('h:mm a');
     var template=jQuery('#location-message-template').html();
     var html=Mustache.render(template,{
         url:message.url,
         from:message.from,
-        createdAt:formattedTime
+        createdAt:formattedTime,
+        color:col
     });
     jQuery('#messages').append(html);
     scrollToBottom();
