@@ -20,12 +20,19 @@ io.on('connection', (socket) => {
   console.log('New user connected');
 
   socket.on('join', (params, callback) => {
+    var user=users.getUser(socket.id);
+    
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback('Name and room name are required.');
     }
 
+    params.room=(params.room).toUpperCase();
     socket.join(params.room);
+
+    
+
     users.removeUser(socket.id);
+
     users.addUser(socket.id, params.name, params.room);
 
     io.to(params.room).emit('updateUserList', users.getUserList(params.room));
