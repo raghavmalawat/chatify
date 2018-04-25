@@ -28,11 +28,10 @@ io.on('connection', (socket) => {
 
     params.room=(params.room).toUpperCase();
     socket.join(params.room);
-
-    
-
+    if(users.getUserList(params.room).includes(params.name)){
+      return callback('User with same name exists. Use another name.');
+    }
     users.removeUser(socket.id);
-
     users.addUser(socket.id, params.name, params.room);
 
     io.to(params.room).emit('updateUserList', users.getUserList(params.room));
