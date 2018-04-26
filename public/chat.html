@@ -25,7 +25,7 @@
   </div>
 
   <script id="message-template" type="text/template">
-    <li class="message">
+    <li style=" clear:{{lineBreak}};float:{{checkUser}}" class="message">
       <div class="message__title">
         <h4 style="color:{{color}}">{{from}}</h4>
         <span>{{createdAt}}</span>
@@ -55,7 +55,6 @@
   <script src="/js/libs/moment.js"></script>
   <script src="/js/libs/deparam.js"></script>
   <script src="/js/libs/mustache.js"></script>
-
   <script src="/js/chat.js"></script>
 </body>
 
