@@ -68,18 +68,28 @@ socket.on('newMessage',function(message){
 });
 
 socket.on('newLocationMessage',function(message){
+    var params=jQuery.deparam(window.location.search);
+
     var col;
+    var checkUser="",lineBreak="both";
     if(message.from=='Admin')
         col='blue';
     else    
         col=message.color;  
     var formattedTime=moment(message.createdAt).format('h:mm a');
     var template=jQuery('#location-message-template').html();
+
+    params.name=(params.name).charAt(0).toUpperCase() + (params.name).slice(1).toLowerCase();
+
+    if(params.name===message.from)
+        checkUser="right";
     var html=Mustache.render(template,{
         url:message.url,
         from:message.from,
         createdAt:formattedTime,
-        color:col
+        color:col,
+        checkUser,
+        lineBreak
     });
     jQuery('#messages').append(html);
     scrollToBottom();
