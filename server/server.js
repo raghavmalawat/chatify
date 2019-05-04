@@ -7,9 +7,7 @@ var dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose') 
 require('dotenv').config();
-mongoose.connect("mongodb://raghavmalawat:raghav1998@ds151416.mlab.com:51416/heroku_hp08lvws",{ useNewUrlParser: true });
-//'mongodb://localhost:27017/chatApp',{ useNewUrlParser: true });
-
+mongoose.connect("mongodb://localhost:27017/chatApp",{ useNewUrlParser: true });
 const {generateMessage, generateLocationMessage} = require('./utils/message');
 const {isRealString} = require('./utils/validation');
 const {Users} = require('./utils/users');
