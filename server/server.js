@@ -3,7 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const _ = require('lodash');
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose') 
 require('dotenv').config();
