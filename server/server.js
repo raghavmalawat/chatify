@@ -7,7 +7,7 @@ var dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 var mongoose = require('mongoose') 
 require('dotenv').config();
-mongoose.connect("mongodb://localhost:27017/chatApp",{ useNewUrlParser: true });
+mongoose.connect("mongodb+srv://admin:admin@cluster0.wmku8.mongodb.net/chatApp?retryWrites=true&w=majority",{ useNewUrlParser: true });
 const {generateMessage, generateLocationMessage} = require('./utils/message');
 const {isRealString} = require('./utils/validation');
 const {Users} = require('./utils/users');
